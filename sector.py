@@ -80,5 +80,29 @@ class Sector(object):
         return r
 
 
+def print_travellermap(sector: Sector, output: str = "SEC"):
+    """Output a Traveller Map compatible format for use with the
+    Traveller Map tools.
+
+    This will change the base codes per below:
+
+    P (Pirate) becomes "C" (Corsair)
+    G (Scout + Pirate) becomes "W" (Scout Way Station)
+
+    See https://travellermap.com/doc/custom for more information.
+
+    Accepted output formats:
+    SEC
+    """
+    output = "SEC" if output not in ("SEC") else output
+    for _, world in sector.hexes.items():
+        if world.bases == "G":
+            world.bases = "W"
+        if world.bases == "P":
+            world.bases = "C"
+    if output == "SEC":
+        print(sector)
+
+
 if __name__ == "__main__":
     print(Sector(subsector=False))
