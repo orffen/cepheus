@@ -152,7 +152,13 @@ class World(object):
         if self.population == 0:
             return 0
         else:
-            return max(1, roll_dice() - 2)
+            # Note that while Cepheus Engine generates an exponent between
+            # 1 and 10, an exponent of 10 effectively bumps the world
+            # population up to the next value -- a population of 7 (10,000,000)
+            # with an exponent of 10 becomes 7x10^10 = 100,000,000, or
+            # population 8. If you want to use the "pure" Cepheus method,
+            # change the below to -2 instead of -3.
+            return max(1, roll_dice() - 3)
 
     def generate_starport(self) -> str:
         r = roll_dice() - 7 + self.population
