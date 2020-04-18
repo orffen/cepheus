@@ -96,12 +96,12 @@ class World(object):
         return "".join(r)
 
     def __str__(self):
-        # Name, UWP, Bases, Trade Codes, Travel Zone, PBG, Allegiance
+        # Name, UWP, Bases, Remarks, Travel Zone, PBG, Allegiance
         # Width 80:
         # - Name:        15
         # - UWP:         9
         # - Bases:       1
-        # - Trade Codes: 43
+        # - Remarks:     43
         # - Travel Zone: 1
         # - PBG:         3
         # - Allegiance:  2
